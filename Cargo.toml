@@ -1,0 +1,12 @@
+[package]
+name = "ledger"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+tera = { version = "1.20.1"}
+argh = "0.1.19"
+toml = "1.1.2"
+serde = "1.0.228"
+similar = "3.1.0"
+thiserror = "2.0.18"
