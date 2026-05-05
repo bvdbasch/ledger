@@ -1,0 +1,21 @@
+---
+# https://taskfile.dev
+version: "3"
+
+tasks:
+  default:
+    desc: List all tasks in the project taskfile
+    cmds:
+      - echo "The current short hash is {{.CI_COMMIT_SHORT_SHA}}"
+      - task --list-all
+    silent: true
+
+  # Documentation
+  # ---------------------------------------------------------------------------------------------------------------------
+  develop-docs:
+    desc: Launch the builtin MKdocs server for working on the docs with hot reload support enabled
+    aliases:
+      - dd
+    cmds:
+      - git-cliff -r . -c cliff.toml -o {{.ROOT_DIR}}/docs/changelog.md
+      - mkdocs serve --livereload

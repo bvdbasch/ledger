@@ -1,0 +1,50 @@
+---
+# See: https://www.mkdocs.org/user-guide/configuration/ for all available configuration options
+site_name: Ledger
+repo_url: https://github.com/bvdbasch/ledger
+repo_name: Github
+site_dir: public # Output folder when running `mkdocs build`
+site_author: Green Pants Black Shirt
+theme:
+  name: readthedocs
+  navigation_depth: 3
+
+nav:
+  - Home: index.md
+  - High level overview: behaviour_and_files.md
+  - Architecture:
+      - Glossary: glossary.md
+      - Architectural Decisions: architectural_decisions.md #
+  - Releases:
+      - Changelog: changelog.md
+
+plugins:
+  - search # Enable searching through the docs
+  - macros # Core part of the way we handle MarkDown parsing!
+  - callouts # Add support for Obsidian style callouts (Markdown Alerts) | See: https://github.com/sondregronas/mkdocs-callouts?tab=readme-ov-file
+  - autolinks # Enable directly linking to files by name | See: https://github.com/zachhannum/mkdocs-autolinks-plugin
+  - link-marker # Show icon next to external links to provide better context | See: https://github.com/timmeinerzhagen/mkdocs-link-marker
+  - literate-nav # Enable including directories in navigation tree | See: https://github.com/oprypin/mkdocs-literate-nav
+  - autolink_references: # Automate architectural decision records, and issue/discussion references | See: https://github.com/theskumar/autolink-references-mkdocs-plugin
+      autolinks:
+        - reference_prefix: ADR-
+          target_url: https://github.com/bvdbasch/ledger/tree/master/docs/architectural_decisions.md#ADR_<num>
+        - reference_prefix: ISSUE-
+          target_url: https://github.com/bvdbasch/ledger/issues/<num>
+        - reference_prefix: THREAD-
+          target_url: https://github.com/bvdbasch/bvdbasch/discussions/<num>
+
+markdown_extensions:
+  - admonition # Improve readability of elements like callouts | See: https://python-markdown.github.io/extensions/admonition/
+  - nl2br # Required for the callouts plugin
+  - pymdownx.details # Required for the callouts plugin
+  - pymdownx.superfences # Required for the callouts plugin
+  - attr_list # Required for resizing images and opening links in a new tab
+  - toc:
+      permalink: true # Generate permanent links at the end of each header
+
+# The configuration below enables site wide data to be templated. This is great for generic references
+# See: https://mkdocs-macros-plugin.readthedocs.io/en/latest/pages/
+extra:
+  project_repo: "[project repository](https://github.com/bvdbasch/ledger){target=_blank}"
+  prefix_image_path: "../"
