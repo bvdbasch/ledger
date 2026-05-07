@@ -5,7 +5,7 @@ use std::sync::LazyLock;
 use crate::domain::installer::{Installer, InstallerError};
 use crate::installers::exists_on_machine;
 
-/// Runs once and stores if brew is available on the current system
+/// Runs once and stores if cargo-binstall is available on the current system
 static HAS_CARGO_BINSTALL: LazyLock<bool> = LazyLock::new(|| exists_on_machine("cargo-binstall"));
 
 pub struct CargoBinstall {

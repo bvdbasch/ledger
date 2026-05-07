@@ -88,21 +88,11 @@ pub enum PackageDirectoryType {
 impl PackageDirectoryType {
     pub fn parse(pkg_dir_type: &str) -> Result<PackageDirectoryType, IndexError> {
         match pkg_dir_type.to_string().to_lowercase().as_str() {
-            "cache" => {
-                return Ok(PackageDirectoryType::Cache);
-            }
-            "config" => {
-                return Ok(PackageDirectoryType::Config);
-            }
-            "data" => {
-                return Ok(PackageDirectoryType::Data);
-            }
-            "state" => {
-                return Ok(PackageDirectoryType::State);
-            }
-            _ => {
-                return Err(IndexError::InvalidPackageDirectoryType);
-            }
+            "cache" => Ok(PackageDirectoryType::Cache),
+            "config" => Ok(PackageDirectoryType::Config),
+            "data" => Ok(PackageDirectoryType::Data),
+            "state" => Ok(PackageDirectoryType::State),
+            _ => Err(IndexError::InvalidPackageDirectoryType),
         }
     }
 }

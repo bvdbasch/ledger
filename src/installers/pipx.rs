@@ -5,7 +5,7 @@ use std::sync::LazyLock;
 use crate::domain::installer::{Installer, InstallerError};
 use crate::installers::exists_on_machine;
 
-/// Runs once and stores if brew is available on the current system
+/// Runs once and stores if pipx is available on the current system
 static HAS_PIPX: LazyLock<bool> = LazyLock::new(|| exists_on_machine("pipx"));
 
 pub struct Pipx {
