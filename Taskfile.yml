@@ -10,6 +10,24 @@ tasks:
       - task --list-all
     silent: true
 
+  # Provision local dev tools and environment (requires pipx)
+  # ---------------------------------------------------------------------------------------------------------------------
+  install-mkdocs:
+    desc: Leverage pipx to install Mkdocs-Macros and the supplementary plugins required to build the documentation locally
+    cmds:
+      - pipx install mkdocs-macros-plugin
+      - pipx inject mkdocs-macros-plugin autolink-references-mkdocs-plugin
+      - pipx inject mkdocs-macros-plugin mkdocs-autolinks-plugin
+      - pipx inject mkdocs-macros-plugin mkdocs-callouts
+      - pipx inject mkdocs-macros-plugin mkdocs-codeinclude-plugin
+      - pipx inject mkdocs-macros-plugin mkdocs-embed-file-plugin
+      - pipx inject mkdocs-macros-plugin mkdocs-link-marker
+      - pipx inject mkdocs-macros-plugin mkdocs-literate-nav
+      - pipx inject mkdocs-macros-plugin mkdocs-macros-plugin
+      - pipx inject mkdocs-macros-plugin mkdocs-mermaid2-plugin
+      - pipx inject mkdocs-macros-plugin platformdirs
+      - pipx inject mkdocs-macros-plugin pymdown-extensions
+
   # Documentation
   # ---------------------------------------------------------------------------------------------------------------------
   develop-docs:
